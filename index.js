@@ -34,7 +34,7 @@ if (req.file) {
 } else {
   return res.status(400).json({
     ok: false,
-    error: "No image uploaded"
+    error: "File url is required!"
   });
 }
 
