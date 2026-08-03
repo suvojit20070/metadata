@@ -2,9 +2,12 @@ const express = require("express");
 const multer = require("multer");
 const ExifReader = require("exifreader");
 const fs = require("fs");
+const axios = require("axios");
 
 const app = express();
 const upload = multer({ dest: "uploads/" });
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.json({
@@ -13,19 +16,27 @@ app.get("/", (req, res) => {
   });
 });
 
-app.post("/metadata", upload.single("image"), (req, res) => {
+app.post("/metadata", upload.single("image"), async (req, res) => {
   try {
-    if (!req.file) {
+    let buffer;
+
+    if (req.file) {
+      buffer = fs.readFileSync(req.file.path);
+      fs.unlinkSync(req.file.path);
+    } else if (req.body.image) {
+      const response = await axios.get(req.body.image, {
+        responseType: "arraybuffer"
+      });
+
+      buffer = Buffer.from(response.data);
+    } else {
       return res.status(400).json({
         ok: false,
         error: "No image uploaded"
       });
     }
 
-    const buffer = fs.readFileSync(req.file.path);
     const metadata = ExifReader.load(buffer);
-
-    fs.unlinkSync(req.file.path);
 
     res.json({
       ok: true,
