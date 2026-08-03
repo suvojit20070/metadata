@@ -18,31 +18,34 @@ app.get("/", (req, res) => {
 
 app.post("/metadata", upload.single("image"), async (req, res) => {
   try {
-    let buffer;
-
-    if (req.file) {
-      buffer = fs.readFileSync(req.file.path);
-      fs.unlinkSync(req.file.path);
-    } else if (req.body.image) {
-      const response = await axios.get(req.body.image, {
-        responseType: "arraybuffer"
-      });
-
-      buffer = Buffer.from(response.data);
-    } else {
-      return res.status(400).json({
-        ok: false,
-        error: "No image uploaded"
-      });
-    }
-
-    // const metadata = ExifReader.load(buffer);
     const { exiftool } = require("exiftool-vendored");
-    const metadata = await exiftool.read(buffer);
-    res.json({
-      ok: true,
-      metadata
-    });
+
+let filePath;
+
+if (req.file) {
+  filePath = req.file.path;
+} else if (req.body.image) {
+  const response = await axios.get(req.body.image, {
+    responseType: "arraybuffer"
+  });
+
+  filePath = `uploads/${Date.now()}.jpg`;
+  fs.writeFileSync(filePath, response.data);
+} else {
+  return res.status(400).json({
+    ok: false,
+    error: "No image uploaded"
+  });
+}
+
+const metadata = await exiftool.read(filePath);
+
+fs.unlinkSync(filePath);
+
+res.json({
+  ok: true,
+  metadata
+});
   } catch (e) {
     if (req.file && fs.existsSync(req.file.path)) {
       fs.unlinkSync(req.file.path);
