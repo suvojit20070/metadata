@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/metadata", upload.single("image"), (req, res) => {
+app.post("/metadata", upload.single("image"), (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({
