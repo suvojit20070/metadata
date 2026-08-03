@@ -36,8 +36,9 @@ app.post("/metadata", upload.single("image"), async (req, res) => {
       });
     }
 
-    const metadata = ExifReader.load(buffer);
-
+    // const metadata = ExifReader.load(buffer);
+    const { exiftool } = require("exiftool-vendored");
+    const metadata = await exiftool.read(buffer);
     res.json({
       ok: true,
       metadata
