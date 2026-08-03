@@ -1,0 +1,13 @@
+{
+  "name": "metadata-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "multer": "^2.0.2",
+    "exifreader": "^4.31.1"
+  }
+}
