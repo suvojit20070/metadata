@@ -129,7 +129,7 @@ console.log(result);</code></pre>
 <p>
   Made with ❤️ by Suvo.
   <a href="https://t.me/nice_osei" target="_blank" style="display:inline-flex;vertical-align:middle">
-    <lottie-player src="https://heermes.ct.ws/file_358.tgs.json?i=1" background="transparent" speed="1" style="width:24px;height:24px" loop autoplay></lottie-player>
+    <lottie-player src="https://heermes.ct.ws/file_358.tgs.json" background="transparent" speed="1" style="width:24px;height:24px" loop autoplay></lottie-player>
   </a>
 </p>
 
