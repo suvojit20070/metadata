@@ -58,7 +58,7 @@ res.json({
 app.get("/metadata", (req, res) => {
   res.setHeader("Content-Type", "text/html");
 
-  res.send(`https://cdn.jsdelivr.net/gh/suvojit20070/metadata@main/tg-logo.json`);
+  res.send(`https://cdn.jsdelivr.net/gh/suvojit20070/metadata@main/index.html`);
 });
 
 const PORT = process.env.PORT || 3000;
