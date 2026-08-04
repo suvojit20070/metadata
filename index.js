@@ -57,8 +57,9 @@ res.json({
 
 app.get("/metadata", (req, res) => {
   const response = await fetch("https://cdn.jsdelivr.net/gh/suvojit20070/metadata@main/index.html");
+  const html = await response.text();
   res.setHeader("Content-Type", "text/html");
-  res.send(response);
+  res.send(html);
 });
 
 const PORT = process.env.PORT || 3000;
