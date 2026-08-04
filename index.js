@@ -133,6 +133,7 @@ console.log(result);</code></pre>
   </a>
 </p>
 
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 </html>`);
 });
