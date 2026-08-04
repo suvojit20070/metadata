@@ -236,7 +236,7 @@ Images • Videos • Audio • Documents • Archives • Stickers • Any publ
     renderer: "svg",
     loop: true,
     autoplay: true,
-    path: "https://raw.githubusercontent.com/suvojit20070/metadata/main/tg-logo.json" // Local file path
+    path: "https://cdn.jsdelivr.net/gh/suvojit20070/metadata@main/tg-logo.json"
   });
 </script>
 
