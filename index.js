@@ -29,7 +29,7 @@ if (req.file) {
     responseType: "arraybuffer"
   });
 
-  filePath = `uploads/${Date.now()}.me`;
+  filePath = `uploads/${Date.now()}.ext`;
   fs.writeFileSync(filePath, response.data);
 } else {
   return res.status(400).json({
