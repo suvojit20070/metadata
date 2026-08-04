@@ -128,12 +128,21 @@ console.log(result);</code></pre>
 
 <p>
   Made with ❤️ by Suvo.
-  <a href="https://t.me/nice_osei" target="_blank" style="display:inline-flex;vertical-align:middle">
-    <lottie-player src="https://heermes.ct.ws/file_358.tgs.json" background="transparent" speed="1" style="width:24px;height:24px" loop autoplay></lottie-player>
+  <a href="https://t.me/nice_osei" target="_blank" style="display:inline-flex;align-items:center;text-decoration:none">
+    <span id="tg-lottie" style="width:24px;height:24px;display:inline-block;margin-left:4px;"></span>
   </a>
 </p>
 
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+<script>
+lottie.loadAnimation({
+  container: document.getElementById("tg-lottie"),
+  renderer: "svg",
+  loop: true,
+  autoplay: true,
+  path: "https://heermes.ct.ws/file_358.tgs.json"
+});
+</script>
 </body>
 </html>`);
 });
