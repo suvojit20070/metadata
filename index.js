@@ -10,10 +10,7 @@ const upload = multer({ dest: "uploads/" });
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json({
-    ok: true,
-    message: "Metadata API is running"
-  });
+  res.redirect(302, "https://metadata-v9yl.onrender.com/metadata");
 });
 
 app.post("/metadata", upload.single("file"), async (req, res) => {
@@ -175,7 +172,7 @@ code{
 </head>
 <body>
 
-<h1>📦 File Metadata API</h1>
+<h1>Metadata API</h1>
 
 <p>
 Extract detailed metadata from any publicly accessible file URL including
