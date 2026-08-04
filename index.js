@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.post("/metadata", upload.single("image"), async (req, res) => {
+app.post("/metadata", upload.single("file"), async (req, res) => {
   try {
     const { exiftool } = require("exiftool-vendored");
 
@@ -24,12 +24,12 @@ let filePath;
 
 if (req.file) {
   filePath = req.file.path;
-} else if (req.body.image) {
-  const response = await axios.get(req.body.image, {
+} else if (req.body.file) {
+  const response = await axios.get(req.body.file, {
     responseType: "arraybuffer"
   });
 
-  filePath = `uploads/${Date.now()}.jpg`;
+  filePath = `uploads/${Date.now()}.me`;
   fs.writeFileSync(filePath, response.data);
 } else {
   return res.status(400).json({
