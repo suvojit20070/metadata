@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>File Metadata API - By Suvo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0d1117;
+  --card:#161b22;
+  --border:#30363d;
+  --accent:#58a6ff;
+  --glow:rgba(88,166,255,.35);
+  --text:#c9d1d9;
+  --heading:#f0f6fc;
+  --code:#7ee787;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+/* পুরো পেজে টেক্সট সিলেকশন বন্ধ (Long press disable) */
+body {
+  margin:40px auto;
+  padding:30px;
+  max-width:850px;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Poppins,sans-serif;
+  opacity:0;
+  animation:fade .8s ease forwards;
+  
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+h1{
+  color:var(--heading);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:2.4rem;
+  margin-bottom:8px;
+  text-shadow:0 0 18px var(--glow);
+}
+
+h2{
+  margin-top:35px;
+  color:var(--accent);
+  border-bottom:1px solid var(--border);
+  padding-bottom:8px;
+}
+
+p{
+  line-height:1.7;
+}
+
+/* কোড ব্লক স্টাইল */
+pre{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px;
+  padding-top: 45px; /* ওপরের জায়গাটুকু খালি রাখা হলো যাতে কপি বাটন টেক্সটের ওপর না পড়ে */
+  overflow:auto;
+  transition:.25s;
+  position: relative;
+}
+
+pre:hover{
+  border-color:var(--accent);
+  box-shadow:0 0 18px var(--glow);
+}
+
+/* শুধুমাত্র কোড ব্লকটুকুই সিলেক্টেবল হবে */
+code{
+  color:var(--code);
+  font-family:"Fira Code",monospace;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* কপি বাটন */
+.copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #21262d;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: Poppins, sans-serif;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  z-index: 10;
+}
+
+.copy-btn:active {
+  background: #30363d;
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:6px;
+  background:#58a6ff20;
+  border:1px solid #58a6ff55;
+  color:var(--accent);
+  font-family:"Fira Code",monospace;
+  font-weight:600;
+}
+
+.footer{
+  margin-top:50px;
+  padding-top:20px;
+  border-top:1px solid var(--border);
+  text-align:center;
+  color:#8b949e;
+}
+
+.footer a{
+  color:inherit;
+  text-decoration:none;
+}
+</style>
+</head>
+<body>
+
+<h1>Metadata API</h1>
+
+<p>
+Extract detailed metadata from any publicly accessible file URL including
+images, videos, audio, documents, archives and more.
+</p>
+
+<h2>Endpoint</h2>
+
+<p><span class="badge">POST /metadata</span></p>
+
+<h2>Request Body</h2>
+
+<pre><code>{
+  "file": "https://example.com/file.ext"
+}</code></pre>
+
+<h2>JavaScript Example</h2>
+
+<pre><code>const result = await HTTP.post({
+  url: "https://metadata-v9yl.onrender.com/metadata",
+  body: {
+    file: "https://example.com/file.ext"
+  }
+});
+
+console.log(result.data); // result.content</code></pre>
+
+<h2>Supported Files</h2>
+
+<p>
+Images • Videos • Audio • Documents • Archives • Stickers • Any public file URL
+</p>
+
+<pre><code>https://example.com/file.ext</code></pre>
+
+<h2>Response</h2>
+
+<pre><code>{
+  "ok": true,
+  "metadata": {
+    ...
+  }
+}</code></pre>
+
+<div class="footer">
+  <p>
+    Made with ❤️ by Suvo.
+    <a href="https://t.me/nice_osei" target="_blank">
+      <span id="tg-lottie"
+      style="display:inline-block;width:40px;height:40px;vertical-align:middle;margin-left:6px;"></span>
+    </a>
+  </p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+
+<script>
+  // Lottie Animation Load via jsDelivr CDN
+  lottie.loadAnimation({
+    container: document.getElementById("tg-lottie"),
+    renderer: "svg",
+    loop: true,
+    autoplay: true,
+    path: "https://cdn.jsdelivr.net/gh/suvojit20070/metadata@main/tg-logo.json"
+  });
+
+  // Universal Dual Copy System
+  function copyToClipboard(textToCopy, btnElement) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => showSuccess(btnElement))
+        .catch(() => fallbackCopy(textToCopy, btnElement));
+    } else {
+      fallbackCopy(textToCopy, btnElement);
+    }
+  }
+
+  function fallbackCopy(textToCopy, btnElement) {
+    const textArea = document.createElement("textarea");
+    textArea.value = textToCopy;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-999999px";
+    textArea.style.top = "-999999px";
+    document.body.appendChild(textArea);
+    
+    textArea.focus();
+    textArea.select();
+    
+    try {
+      document.execCommand('copy');
+      showSuccess(btnElement);
+    } catch (err) {
+      console.error('Fallback copy failed', err);
+    }
+    document.body.removeChild(textArea);
+  }
+
+  function showSuccess(btnElement) {
+    btnElement.innerText = "Copied!";
+    btnElement.style.color = "#7ee787";
+    btnElement.style.borderColor = "#7ee787";
+
+    setTimeout(() => {
+      btnElement.innerText = "Copy";
+      btnElement.style.color = "var(--text)";
+      btnElement.style.borderColor = "var(--border)";
+    }, 2000);
+  }
+
+  document.querySelectorAll("pre").forEach((preBlock) => {
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "copy-btn";
+    copyBtn.innerText = "Copy";
+
+    copyBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const codeElement = preBlock.querySelector("code");
+      if (codeElement) {
+        copyToClipboard(codeElement.innerText, copyBtn);
+      }
+    });
+
+    preBlock.appendChild(copyBtn);
+  });
+</script>
+
+</body>
+</html>
