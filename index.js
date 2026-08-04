@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const multer = require("multer");
 const ExifReader = require("exifreader");
 const fs = require("fs");
@@ -56,10 +57,9 @@ res.json({
 });
 
 app.get("/metadata", (req, res) => {
-  const response = fetch("https://cdn.jsdelivr.net/gh/suvojit20070/metadata@main/index.html");
-  const html = response.text();
   res.setHeader("Content-Type", "text/html");
-  res.send(html);
+  // res.send(html);
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 const PORT = process.env.PORT || 3000;
