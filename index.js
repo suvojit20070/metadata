@@ -58,6 +58,80 @@ res.json({
   }
 });
 
+app.get("/metadata", (req, res) => {
+  res.setHeader("Content-Type", "text/html");
+
+  res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Metadata API</title>
+<style>
+body{
+  font-family:Arial,sans-serif;
+  max-width:800px;
+  margin:40px auto;
+  padding:20px;
+  background:#111;
+  color:#fff;
+}
+pre{
+  background:#1e1e1e;
+  padding:15px;
+  border-radius:8px;
+  overflow:auto;
+}
+code{color:#7ee787;}
+</style>
+</head>
+<body>
+
+<h1>📦 Metadata API</h1>
+
+<p>Extract metadata from an image URL.</p>
+
+<h2>Endpoint</h2>
+
+<pre><code>POST /metadata</code></pre>
+
+<h2>Body</h2>
+
+<pre><code>{
+  "image": "https://example.com/image.jpg"
+}</code></pre>
+
+<h2>JavaScript Example</h2>
+
+<pre><code>const result = await HTTP.post({
+  url: "https://metadata-v9yl.onrender.com/metadata",
+  body: {
+    image: "https://example.com/image.jpg"
+  }
+});
+
+console.log(result);</code></pre>
+
+<h2>Direct Image URL</h2>
+
+<p>You can pass any public image URL.</p>
+
+<pre><code>https://example.com/image.jpg</code></pre>
+
+<h2>Response</h2>
+
+<pre><code>{
+  "success": true,
+  "metadata": {
+    ...
+  }
+}</code></pre>
+
+<p>Made with ❤️ by Suvo.</p>
+
+</body>
+</html>`);
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
