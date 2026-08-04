@@ -57,7 +57,7 @@ res.json({
 
 app.get("/metadata", (req, res) => {
   const response = await fetch("https://cdn.jsdelivr.net/gh/suvojit20070/metadata@main/index.html");
-  const html = await response.text();
+  const html = response.text();
   res.setHeader("Content-Type", "text/html");
   res.send(html);
 });
