@@ -198,7 +198,9 @@ images, videos, audio, documents, archives and more.
   }
 });
 
-console.log(result);</code></pre>
+console.log(result.data); // result.content
+
+</code></pre>
 
 <h2>Supported Files</h2>
 
@@ -211,7 +213,7 @@ Images • Videos • Audio • Documents • Archives • Stickers • Any publ
 <h2>Response</h2>
 
 <pre><code>{
-  "success": true,
+  "ok": true,
   "metadata": {
     ...
   }
