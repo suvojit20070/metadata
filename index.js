@@ -198,9 +198,7 @@ images, videos, audio, documents, archives and more.
   }
 });
 
-console.log(result.data); // result.content
-
-</code></pre>
+console.log(result.data); // result.content</code></pre>
 
 <h2>Supported Files</h2>
 
@@ -224,7 +222,7 @@ Images • Videos • Audio • Documents • Archives • Stickers • Any publ
     Made with ❤️ by Suvo.
     <a href="https://t.me/nice_osei" target="_blank">
       <span id="tg-lottie"
-      style="display:inline-block;width:24px;height:24px;vertical-align:middle;margin-left:6px;"></span>
+      style="display:inline-block;width:40px;height:40px;vertical-align:middle;margin-left:6px;"></span>
     </a>
   </p>
 </div>
@@ -232,14 +230,17 @@ Images • Videos • Audio • Documents • Archives • Stickers • Any publ
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 
 <script>
-lottie.loadAnimation({
-  container: document.getElementById("tg-lottie"),
-  renderer: "svg",
-  loop: true,
-  autoplay: true,
-  path: "https://heermes.ct.ws/file_358.tgs.json"
-});
+  // Root folder-er tg-logo.json load korbe
+  lottie.loadAnimation({
+    container: document.getElementById("tg-lottie"),
+    renderer: "svg",
+    loop: true,
+    autoplay: true,
+    path: "tg-logo.json" // Local file path
+  });
 </script>
+
+
 
 </body>
 </html>`);
